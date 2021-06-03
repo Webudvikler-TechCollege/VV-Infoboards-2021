@@ -81,7 +81,7 @@ const Activities = () => {
 
     return (
         <table className={Style.tableWidget}>
-            <tr>
+            <tr className={Style.tableHeader}>
                 <th>Kl.</th>
                 <th>Fag</th>
                 <th>Uddannelse</th>
