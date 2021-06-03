@@ -1,4 +1,5 @@
 import './App.css';
+import Activities from './Components/Activities/Activities';
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
         {/* place clock, bus and food here */}
       </div>
       <div className="list">
-        {/* place list here */}
+        <Activities />
       </div>
     </main>
   );
