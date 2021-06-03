@@ -2,8 +2,14 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <main className="App">
+      <div className="aside">
+        {/* place clock, bus and food here */}
+      </div>
+      <div className="list">
+        {/* place list here */}
+      </div>
+    </main>
   );
 }
 
