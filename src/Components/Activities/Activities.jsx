@@ -22,7 +22,6 @@ const Activities = () => {
         setTimeout(() => {
             fetchHelper();
         }, 1000)
-        clearTimeout()
 
         const currDay = new Date().setHours(0, 0, 0, 0) / 1000;
         setNextDay_Timestamp(currDay + 86400);
