@@ -19,7 +19,10 @@ const Activities = () => {
     
     //The list will only be fetched one time (that is when the site loads)
     useEffect(() => {
-        fetchHelper();
+        setTimeout(() => {
+            fetchHelper();
+        }, 1000)
+        clearTimeout()
 
         const currDay = new Date().setHours(0, 0, 0, 0) / 1000;
         setNextDay_Timestamp(currDay + 86400);
@@ -78,7 +81,6 @@ const Activities = () => {
         return title;
     }
 
-
     return (
         <table className={Style.tableWidget}>
             <tr className={Style.tableHeader}>
@@ -89,9 +91,7 @@ const Activities = () => {
                 <th>Lokale</th>
             </tr>
 
-            {
-                showNextDay ?
-                thisDay_List.map((item, index) => {
+            {thisDay_List.map((item, index) => {
                     return (
                         <tr key={index}>
                             <td>{handleTime(item.timestamp)}</td>
@@ -101,8 +101,7 @@ const Activities = () => {
                             <td>{item.classroom}</td>
                         </tr>
                     )
-                }) : null
-            }
+                })}
         </table>
     )
 }
