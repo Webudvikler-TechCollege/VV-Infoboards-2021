@@ -19,14 +19,13 @@ const Activities = () => {
         setListArray(data.result);
     };
     
-    //The list will only be fetched one time
     useEffect(() => {
         fetchHelper();
 
         const currDay = new Date().setHours(0, 0, 0, 0) / 1000;
         setNextDay_Timestamp(currDay + 86400);
 
-        const filteredData_thisDay = listArray.filter((elements) => elements.timestamp < nextDay_Timestamp);
+        const filteredData_thisDay = listArray.filter(elements => elements.timestamp < nextDay_Timestamp);
         setThisDay_List(filteredData_thisDay);
     }, [])
 
@@ -97,7 +96,7 @@ const Activities = () => {
             </thead>
 
             <tbody>
-                {listArray.map((item, index) => {
+                {thisDay_List.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{handleTime(item.timestamp)}</td>
@@ -107,7 +106,7 @@ const Activities = () => {
                                 <td>{item.classroom}</td>
                             </tr>
                         )
-                    })}
+                })}
             </tbody>
         </table>
     )
