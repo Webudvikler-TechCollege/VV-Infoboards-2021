@@ -97,7 +97,7 @@ const Activities = () => {
             </thead>
 
             <tbody>
-                {listArray && thisDay_List.map((item, index) => {
+                {listArray.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{handleTime(item.timestamp)}</td>
