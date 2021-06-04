@@ -84,25 +84,29 @@ const Activities = () => {
 
     return (
         <table className={Style.tableWidget}>
-            <tr className={Style.tableHeader}>
-                <th>Kl.</th>
-                <th>Fag</th>
-                <th>Uddannelse</th>
-                <th>Hold</th>
-                <th>Lokale</th>
-            </tr>
+            <thead>
+                <tr className={Style.tableHeader}>
+                    <th>Kl.</th>
+                    <th>Fag</th>
+                    <th>Uddannelse</th>
+                    <th>Hold</th>
+                    <th>Lokale</th>
+                </tr>
+            </thead>
 
-            {thisDay_List.map((item, index) => {
-                    return (
-                        <tr key={index}>
-                            <td>{handleTime(item.timestamp)}</td>
-                            <td>{item.name}</td>
-                            <td>{handleEducation(item.class)}</td>
-                            <td>{item.class}</td>
-                            <td>{item.classroom}</td>
-                        </tr>
-                    )
-                })}
+            <tbody>
+                {thisDay_List.map((item, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{handleTime(item.timestamp)}</td>
+                                <td>{item.name}</td>
+                                <td>{handleEducation(item.class)}</td>
+                                <td>{item.class}</td>
+                                <td>{item.classroom}</td>
+                            </tr>
+                        )
+                    })}
+            </tbody>
         </table>
     )
 }
