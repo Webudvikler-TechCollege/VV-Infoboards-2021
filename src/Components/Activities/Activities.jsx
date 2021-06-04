@@ -11,7 +11,10 @@ const Activities = () => {
 
     const fetchHelper = async () => {
         const url = 'https://api.mediehuset.net/infoboard/activities';
-        const response = await fetch(url)
+        const options = {
+            method: 'GET',
+        }
+        const response = await fetch(url, options)
         const data = await response.json()
 
         setListArray(data.result);
