@@ -5,9 +5,8 @@ const Activities = () => {
     const [listArray, setListArray] = useState([]);
     const [nextDay_Timestamp, setNextDay_Timestamp] = useState('');
 
-    const [showNextDay, setShowNextDay] = useState(true);
-
     const [thisDay_List, setThisDay_List] = useState([]);
+
 
     const fetchHelper = async () => {
         const url = 'https://api.mediehuset.net/infoboard/activities';
@@ -16,19 +15,18 @@ const Activities = () => {
         }
         const response = await fetch(url, options)
         const data = await response.json()
+        
+        const filteredData = await data.result.filter((elements) => elements.timestamp < nextDay_Timestamp)
+        setListArray(filteredData);
+    };
 
-        setListArray(data.result);
-    };  
     
     //The list will only be fetched one time
     useEffect(() => {
         fetchHelper();
-        console.log(listArray)
 
         const currDay = new Date().setHours(0, 0, 0, 0) / 1000;
         setNextDay_Timestamp(currDay + 86400);
-
-        setThisDay_List(listArray.filter(elements => elements.timestamp < nextDay_Timestamp));
     }, [])
 
     const handleTime = (input) => {
@@ -47,6 +45,9 @@ const Activities = () => {
         const educationName = input.replace(/[0-9]/g, '');
         let title;
         switch (educationName) {
+            default: 
+                title = '';
+                break;
             case 'agr':
                 title = 'AMU Grafik';
                 break;
@@ -95,7 +96,7 @@ const Activities = () => {
             </thead>
 
             <tbody>
-                {thisDay_List.map((item, index) => {
+                {listArray.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{handleTime(item.timestamp)}</td>
