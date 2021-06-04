@@ -16,10 +16,8 @@ const Activities = () => {
         const response = await fetch(url, options)
         const data = await response.json()
         
-        const filteredData = await data.result.filter((elements) => elements.timestamp < nextDay_Timestamp)
-        setListArray(filteredData);
+        setListArray(data.result);
     };
-
     
     //The list will only be fetched one time
     useEffect(() => {
@@ -27,6 +25,9 @@ const Activities = () => {
 
         const currDay = new Date().setHours(0, 0, 0, 0) / 1000;
         setNextDay_Timestamp(currDay + 86400);
+
+        const filteredData_thisDay = listArray.filter((elements) => elements.timestamp < nextDay_Timestamp);
+        setThisDay_List(filteredData_thisDay);
     }, [])
 
     const handleTime = (input) => {
@@ -96,7 +97,7 @@ const Activities = () => {
             </thead>
 
             <tbody>
-                {listArray.map((item, index) => {
+                {listArray && thisDay_List.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{handleTime(item.timestamp)}</td>
