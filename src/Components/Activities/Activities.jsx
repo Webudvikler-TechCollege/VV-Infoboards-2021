@@ -20,7 +20,7 @@ const Activities = () => {
         setListArray(data.result);
     };  
     
-    //The list will only be fetched one time (that is when the site loads)
+    //The list will only be fetched one time
     useEffect(() => {
         fetchHelper();
         console.log(listArray)
@@ -29,7 +29,7 @@ const Activities = () => {
         setNextDay_Timestamp(currDay + 86400);
 
         setThisDay_List(listArray.filter(elements => elements.timestamp < nextDay_Timestamp));
-    }, [])
+    }, [window.onload])
 
     const handleTime = (input) => {
         const inputMiliseconds = input * 1000;
