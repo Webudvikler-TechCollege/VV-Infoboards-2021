@@ -2,31 +2,23 @@ import React, { useEffect, useState } from 'react';
 import Style from './Activities.module.scss';
 
 const Activities = () => {
-    const [listArray, setListArray] = useState([]);
-    const [nextDay_Timestamp, setNextDay_Timestamp] = useState('');
-
-    const [thisDay_List, setThisDay_List] = useState([]);
-
+    const [fetchedData, setFetchedData] = useState([]);
+    const nextDay_Timestamp = new Date().setHours(0, 0, 0, 0) / 1000 + 86400;
 
     const fetchHelper = async () => {
         const url = 'https://api.mediehuset.net/infoboard/activities';
         const options = {
             method: 'GET',
         }
-        const response = await fetch(url, options)
-        const data = await response.json()
-        
-        setListArray(data.result);
+        const response = await fetch(url, options);
+        const data = await response.json();
+
+        const fetched_data = data.result.filter(elements => elements.timestamp < nextDay_Timestamp);
+        setFetchedData(fetched_data)
     };
     
     useEffect(() => {
         fetchHelper();
-
-        const currDay = new Date().setHours(0, 0, 0, 0) / 1000;
-        setNextDay_Timestamp(currDay + 86400);
-
-        const filteredData_thisDay = listArray.filter(elements => elements.timestamp < nextDay_Timestamp);
-        setThisDay_List(filteredData_thisDay);
     }, [])
 
     const handleTime = (input) => {
@@ -96,7 +88,7 @@ const Activities = () => {
             </thead>
 
             <tbody>
-                {thisDay_List.map((item, index) => {
+                {fetchedData && fetchedData.slice(0, 15).map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{handleTime(item.timestamp)}</td>
