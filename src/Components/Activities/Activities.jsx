@@ -19,9 +19,7 @@ const Activities = () => {
     
     //The list will only be fetched one time (that is when the site loads)
     useEffect(() => {
-        setTimeout(() => {
-            fetchHelper();
-        }, 1000)
+        fetchHelper();
 
         const currDay = new Date().setHours(0, 0, 0, 0) / 1000;
         setNextDay_Timestamp(currDay + 86400);
