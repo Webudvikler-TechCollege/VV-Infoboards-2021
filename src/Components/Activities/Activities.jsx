@@ -29,7 +29,7 @@ const Activities = () => {
         setNextDay_Timestamp(currDay + 86400);
 
         setThisDay_List(listArray.filter(elements => elements.timestamp < nextDay_Timestamp));
-    }, [window.onload])
+    }, [])
 
     const handleTime = (input) => {
         const inputMiliseconds = input * 1000;
