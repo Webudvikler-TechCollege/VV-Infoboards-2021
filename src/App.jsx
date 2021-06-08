@@ -1,11 +1,16 @@
 import './App.css';
 import Activities from './Components/Activities/Activities';
+import { GetCurrentDate } from './Components/Date/customDate';
+import Menu from './Components/Menu/Menu';
+import {Bus} from './Components/Bus'
 
 function App() {
   return (
     <main className="App">
       <div className="aside">
-        {/* place clock, bus and food here */}
+        <GetCurrentDate/>
+        <Menu/>
+        <Bus/>
       </div>
       <div className="list">
         <Activities />
