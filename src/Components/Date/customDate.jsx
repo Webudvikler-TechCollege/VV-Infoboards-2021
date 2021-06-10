@@ -25,7 +25,8 @@ export const GetCurrentDate = () => {
         {date && date.toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
-            }).replace(".", date.getSeconds() % 2 === 0 ? ":" : " ")}
+              second: "2-digit",
+            }).replace(".", ":")}
       </div>
     </>
   );

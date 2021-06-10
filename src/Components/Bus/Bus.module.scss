@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+section{
+  text-align: center;
+  font-family: "Titillium Web";
+  h2{
+    font-size: 50px;
+     text-decoration: underline;
+     text-transform: uppercase;
+     font-weight: 900;
+     letter-spacing: 4px;
+
+  }
+  ul{
+    li{
+      display: flex;
+      justify-content: center;
+      p{
+        font-family: "Titillium Web";
+        font-weight: 300;
+        font-size: 30px;
+        margin: 0 1rem 0 0;
+        text-align: right;
+      }
+    }
+  }
+}

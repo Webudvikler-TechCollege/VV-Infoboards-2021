@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-
+import Style from "./Bus.module.scss"
 const interval = 1; // Minutes
 
 const endpoints = [
   "http://xmlopen.rejseplanen.dk/bin/rest.exe/departureBoard?id=851400602&rttime&format=json&useBus=1",
-  "http://xmlopen.rejseplanen.dk/bin/rest.exe/departureBoard?id=851973402&rttime&format=json&useBus=1",
+  "http://xmlopen.rejseplanen.dk/bin/rest.exe/departureBoard?id=851973402&rttime&format=json&useBus=1"
 ];
 
 export const Bus = () => {
@@ -80,14 +80,13 @@ export const Bus = () => {
 
   return (
     <section>
+      <h2>Bustider</h2>
       <ul>
         {bus &&
           bus.map((bus, id) => (
             <li key={id}>
-              <span>
                 <p>{bus.line}</p>
                 <p>{bus.direction}</p>
-              </span>
               <p>{bus.takeOff} min</p>
             </li>
           ))}
