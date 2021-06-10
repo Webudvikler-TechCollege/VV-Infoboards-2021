@@ -2,7 +2,7 @@ import './App.css';
 import Activities from './Components/Activities/Activities';
 import { GetCurrentDate } from './Components/Date/customDate';
 import Menu from './Components/Menu/Menu';
-import {Bus} from './Components/Bus'
+import { Bus } from './Components/Bus/Bus'
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <GetCurrentDate/>
         <Menu/>
         <Bus/>
+        <Weather/>
       </div>
       <div className="list">
         <Activities />

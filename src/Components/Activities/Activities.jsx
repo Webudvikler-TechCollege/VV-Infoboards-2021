@@ -76,7 +76,7 @@ const Activities = () => {
     }
 
     return (
-        <table className={Style.tableWidget}>
+        <table className={Style.tableWidget} cellPadding="0" cellSpacing="0">
             <thead>
                 <tr className={Style.tableHeader}>
                     <th>Kl.</th>

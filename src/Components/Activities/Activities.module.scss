@@ -4,3 +4,28 @@
     text-align: left;
     padding: 10px;
 }
+
+table{
+    
+    thead{
+        font-size: 40px;
+        font-family: "Titillium Web";
+        border: 2px solid black;
+        font-weight: bold;
+        tr{
+            th {
+                border-bottom: 2px solid black;
+            }
+        }
+    }
+    tbody{
+        tr{
+            td{
+                font-size: 40px;
+                font-family: "Titillium Web";
+                font-weight: 300;
+                border-bottom: 1px solid black;
+            }
+        }
+    }
+}
