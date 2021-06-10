@@ -3,6 +3,7 @@ import Activities from './Components/Activities/Activities';
 import { GetCurrentDate } from './Components/Date/customDate';
 import Menu from './Components/Menu/Menu';
 import { Bus } from './Components/Bus/Bus'
+import Weather from './Components/Weather/Weather'
 
 function App() {
   return (
