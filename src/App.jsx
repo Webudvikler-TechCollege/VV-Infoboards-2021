@@ -3,7 +3,7 @@ import Activities from './Components/Activities/Activities';
 import { GetCurrentDate } from './Components/Date/customDate';
 import Menu from './Components/Menu/Menu';
 import { Bus } from './Components/Bus/Bus'
-import Weather from './Components/Weather/Weather'
+// import Weather from './Components/Weather/Weather'
 import Img from './image/lol.png'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <GetCurrentDate/>
           <Menu/>
           <Bus/>
-          <Weather/>
+          {/* <Weather/> */}
         </div>
       </div>
       <div className="list">
