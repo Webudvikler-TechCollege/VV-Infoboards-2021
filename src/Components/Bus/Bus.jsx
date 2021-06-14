@@ -16,14 +16,16 @@ export const Bus = () => {
 
       let departure = data.MultiDepartureBoard.Departure.splice(0, 5);
 
-      // Concurrent 
+      // Date 
       let date = new Date()
       let hours = date.getHours();
       let minutes = date.getMinutes();
 
+      // Current time
       let currentTime = (hours < 10 ? "0" + hours : hours) + ':' + (minutes < 10 ? "0" + minutes : minutes);
       let time = currentTime.length < 4 ? "0" + currentTime : currentTime;
 
+      // Today
       let year = date.getFullYear();
       let month = date.getMonth() + 1;
       let day = date.getDate();
@@ -40,7 +42,7 @@ export const Bus = () => {
         const minutes = Math.floor(diff / 60) % 60;
         diff -= minutes * 60;
 
-        // Time difference
+        // Dispaly time difference
         let difference = `${hours}h ${minutes}m`;
 
         departure[i].time = difference
