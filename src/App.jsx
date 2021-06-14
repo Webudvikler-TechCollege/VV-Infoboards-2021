@@ -10,14 +10,10 @@ function App() {
   return (
     <main className="App">
       <div className="aside">
-        <img src={Img} alt="" />
-        <div className="opacity"></div>
-        <div className="wrapper">
           <GetCurrentDate/>
           <Menu/>
           <Bus/>
           {/* <Weather/> */}
-        </div>
       </div>
       <div className="list">
         <Activities />
