@@ -14,7 +14,39 @@ export const Bus = () => {
       const res = await fetch('http://xmlopen.rejseplanen.dk/bin/rest.exe/multiDepartureBoard?id1=851400602&id2=851973402&rttime&format=json&useBus=1');
       const data = await res.json();
 
-      setBus(data.MultiDepartureBoard.Departure.splice(0, 5));
+      let departure = data.MultiDepartureBoard.Departure.splice(0, 5);
+
+      // Concurrent 
+      let date = new Date()
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+
+      let currentTime = (hours < 10 ? "0" + hours : hours) + ':' + (minutes < 10 ? "0" + minutes : minutes);
+      let time = currentTime.length < 4 ? "0" + currentTime : currentTime;
+
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      let today = `${year}/${month}/${day}`;
+
+      for (let i = 0; i < departure.length; i++) {
+        let diff = Math.abs(Math.round(new Date(today + ' ' + (departure[i].time + ":00")) - new Date(today + ' ' + (time + ":00")))) / 1000;
+
+        // Calculate hours
+        const hours = Math.floor(diff / 3600) % 24;
+        diff -= hours * 3600;
+
+        // Calculate minutes
+        const minutes = Math.floor(diff / 60) % 60;
+        diff -= minutes * 60;
+
+        // Time difference
+        let difference = `${hours}h ${minutes}m`;
+
+        departure[i].time = difference
+      }
+
+      setBus(departure)
     } catch (err) { return }
 
     setTimeout(() => handleFetch(), interval * 1000 * 60);
@@ -29,7 +61,7 @@ export const Bus = () => {
             <li key={id}>
               <p>{bus.line}</p>
               <p>{bus.direction}</p>
-              <p>{bus.takeOff} min</p>
+              <p>{bus.time}</p>
             </li>
           ))}
       </ul>
