@@ -6,7 +6,7 @@
 }
 
 table{
-    
+    margin: 0 2rem;
     thead{
         font-size: 2vw;
         font-family: "Titillium Web";
@@ -25,6 +25,7 @@ table{
                 font-family: "Titillium Web";
                 font-weight: 300;
                 border-bottom: 1px solid black;
+                padding: 10px 0;
             }
         }
     }
