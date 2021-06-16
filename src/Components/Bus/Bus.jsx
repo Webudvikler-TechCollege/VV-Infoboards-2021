@@ -11,7 +11,7 @@ export const Bus = () => {
 
   const handleFetch = async () => {
     try {
-      const res = await fetch('http://xmlopen.rejseplanen.dk/bin/rest.exe/multiDepartureBoard?id1=851400602&id2=851973402&rttime&format=json&useBus=1');
+      const res = await fetch('https://xmlopen.rejseplanen.dk/bin/rest.exe/multiDepartureBoard?id1=851400602&id2=851973402&rttime&format=json&useBus=1');
       const data = await res.json();
 
       let departure = data.MultiDepartureBoard.Departure.splice(0, 5);
