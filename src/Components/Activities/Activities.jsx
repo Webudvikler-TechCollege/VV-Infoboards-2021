@@ -18,12 +18,8 @@ const Activities = () => {
         setFetchedData(fetched_data)
 
         const next_day_data = data.result.filter(elements => elements.timestamp >= nextDay_Timestamp);
-        const next_day_data_sliced = next_day_data.slice(0, 15 - 1 - fetchedData.length);
+        const next_day_data_sliced = next_day_data.slice(0, 14 - 1 - fetchedData.length);
         setNextDayData(next_day_data_sliced);
-
-        // if (fetchedData < 15) {
-            // const tableBody = document.querySelector('#tableBody');
-        // }
     };
     
     useEffect(() => {
@@ -100,7 +96,7 @@ const Activities = () => {
             </thead>
 
             <tbody id="tableBody">
-                {fetchedData && fetchedData.slice(0, 15).map((item, index) => {
+                {fetchedData && fetchedData.slice(0, 14).map((item, index) => {
                     return (
                         <tr key={index}>
                             <td>{handleTime(item.timestamp)}</td>
@@ -112,14 +108,14 @@ const Activities = () => {
                     )
                 })}
 
-                { fetchedData && fetchedData.length < 15 ? 
+                { fetchedData && fetchedData.length < 14 ? 
                     <tr>
                         <td>Næste skoledag</td>
                     </tr> 
                     : null
                 }
 
-                { fetchedData && fetchedData.length < 14 ? 
+                { fetchedData && fetchedData.length < 13 ? 
                     nextDayData.map((item, index) => {
                         return (
                             <tr key={index}>
