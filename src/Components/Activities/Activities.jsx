@@ -21,7 +21,7 @@ const Activities = () => {
         fetchHelper();
         setInterval(() => {
             fetchHelper();
-        }, 1200000)
+        }, 600000)
     }, [])
 
     const handleTime = (input) => {
