@@ -95,7 +95,7 @@ const Activities = () => {
                         return (
                             <tr key={index}>
                                 <td>{handleTime(item.timestamp)}</td>
-                                <td>{item.name}</td>
+                                <td>{item.name.toUpperCase()}</td>
                                 <td>{handleEducation(item.class)}</td>
                                 <td>{item.class}</td>
                                 <td>{item.classroom}</td>
