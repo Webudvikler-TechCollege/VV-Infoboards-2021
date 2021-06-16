@@ -18,9 +18,7 @@ const Activities = () => {
     };
     
     useEffect(() => {
-        setInterval(() => {
-            fetchHelper();
-        }, 1200000)
+        fetchHelper();
     }, [])
 
     const handleTime = (input) => {
