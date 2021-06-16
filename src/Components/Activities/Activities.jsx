@@ -3,6 +3,7 @@ import Style from './Activities.module.scss';
 
 const Activities = () => {
     const [fetchedData, setFetchedData] = useState([]);
+    const [nextDayData, setNextDayData] = useState([]);
     const nextDay_Timestamp = new Date().setHours(0, 0, 0, 0) / 1000 + 86400;
 
     const fetchHelper = async () => {
@@ -15,6 +16,14 @@ const Activities = () => {
 
         const fetched_data = data.result.filter(elements => elements.timestamp < nextDay_Timestamp);
         setFetchedData(fetched_data)
+
+        const next_day_data = data.result.filter(elements => elements.timestamp >= nextDay_Timestamp);
+        const next_day_data_sliced = next_day_data.slice(0, 15 - 1 - fetchedData.length);
+        setNextDayData(next_day_data_sliced);
+
+        // if (fetchedData < 15) {
+            // const tableBody = document.querySelector('#tableBody');
+        // }
     };
     
     useEffect(() => {
@@ -90,8 +99,28 @@ const Activities = () => {
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tableBody">
                 {fetchedData && fetchedData.slice(0, 15).map((item, index) => {
+                    return (
+                        <tr key={index}>
+                            <td>{handleTime(item.timestamp)}</td>
+                            <td>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</td>
+                            <td>{handleEducation(item.class)}</td>
+                            <td>{item.class}</td>
+                            <td>{item.classroom}</td>
+                        </tr>
+                    )
+                })}
+
+                { fetchedData && fetchedData.length < 15 ? 
+                    <tr>
+                        <td>Næste skoledag</td>
+                    </tr> 
+                    : null
+                }
+
+                { fetchedData && fetchedData.length < 14 ? 
+                    nextDayData.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{handleTime(item.timestamp)}</td>
@@ -100,8 +129,10 @@ const Activities = () => {
                                 <td>{item.class}</td>
                                 <td>{item.classroom}</td>
                             </tr>
-                        )
-                })}
+                        ) 
+                    })
+                    : null
+                }
             </tbody>
         </table>
     )
