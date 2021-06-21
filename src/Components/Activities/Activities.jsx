@@ -199,7 +199,7 @@ const Activities = () => {
                     : null
                 }
 
-                { fetchedData && fetchedData.length < 13 ? 
+                { fetchedData && fetchedData.length < 12 ? 
                     nextDayData.map((item, index) => {
                         return (
                             <tr key={index}>
