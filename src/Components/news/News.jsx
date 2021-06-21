@@ -17,7 +17,7 @@ export const News = memo(() => {
     }, [])
 
     return(
-        <marquee scrollamount="20" behavior="" direction=""><p>
+        <marquee scrollamount="25" behavior="" direction=""><p>
             {hytteListe && hytteListe.map((item, index) => {
                 return(
                     <span key={index}>{item.title} * </span>
