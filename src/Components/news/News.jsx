@@ -2,7 +2,7 @@ import { fetch2api } from '../../helpers/fetch'
 import { useEffect, useState } from 'react';
 import Style from './News.module.scss';
 
-export const Hytte = () => {
+export const News = () => {
     const[hytteListe, setHytteListe] = useState(null);
 
     const getHytteListe = async () => {
