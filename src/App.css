@@ -12,8 +12,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 30% 70%;
-  overflow: hidden;
-}
+  }
 
 .aside {
   position: relative;
@@ -36,11 +35,20 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.45);
   z-index: -1;
+}
 
+.main-content{
+  display: grid;
+  row-gap: auto 1fr;
+  height: 100vh;
 }
 
 .list {
   width: 100%;
-  height: 100%;
   /* background-color: white; */
+  overflow: hidden;
+}
+
+.news{
+  width: 100%;
 }

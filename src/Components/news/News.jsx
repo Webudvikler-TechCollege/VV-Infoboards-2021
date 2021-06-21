@@ -1,4 +1,4 @@
-import { fetch2api } from '../../helpers/fetch'
+import { fetch2api } from '../../helpers/helper'
 import { useEffect, useState } from 'react';
 import Style from './News.module.scss';
 
