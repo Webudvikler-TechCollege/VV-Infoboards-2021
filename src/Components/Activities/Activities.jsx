@@ -6,6 +6,8 @@ const Activities = () => {
     const [nextDayData, setNextDayData] = useState([]);
     const nextDay_Timestamp = new Date().setHours(0, 0, 0, 0) / 1000 + 86400;
 
+    const [nextDay, setNextDay] = useState('');
+
     const fetchHelper = async () => {
         const url = 'https://api.mediehuset.net/infoboard/activities';
         const options = {
@@ -21,11 +23,91 @@ const Activities = () => {
         const next_day_data_sliced = next_day_data.slice(0, 14 - 1 - fetchedData.length);
         setNextDayData(next_day_data_sliced);
     };
+
+    const setNextDayFunction = () => {
+        const nextDay_Day = new Date(nextDay_Timestamp * 1000).getDay();
+        const nextDay_Month = new Date(nextDay_Timestamp * 1000).getMonth();
+        const nextDay_Date = new Date(nextDay_Timestamp * 1000).getDate();
+
+        let day, date = nextDay_Date, month;
+
+        switch (nextDay_Day) {
+            default:
+                break;
+            case 0:
+                day = 'Søndag';
+                break;
+            case 1:
+                day = 'Mandag';
+                break;
+            case 2:
+                day = 'Tirsdag';
+                break;
+            case 3:
+                day = 'Onsdag';
+                break;
+            case 4:
+                day = 'Torsdag';
+                break;
+            case 5:
+                day = 'Fredag';
+                break;
+            case 6:
+                day = 'Lørdag';
+                break;
+        }
+
+        switch (nextDay_Month) {
+            default:
+                break;
+            case 0:
+                month = 'Januar';
+                break;
+            case 1:
+                month = 'Febuar';
+                break;
+            case 2:
+                month = 'Marts';
+                break;
+            case 3:
+                month = 'April';
+                break;
+            case 4:
+                month = 'Maj';
+                break;
+            case 5:
+                month = 'Juni';
+                break;
+            case 6:
+                month = 'Juli';
+                break;
+            case 7:
+                month = 'August';
+                break;
+            case 8:
+                month = 'September';
+                break;
+            case 9:
+                month = 'Oktober';
+                break;
+            case 10:
+                month = 'November';
+                break;
+            case 11:
+                month = 'December';
+                break;
+        }
+
+
+        setNextDay(`${day}`+ ` ${date}` + ` ${month}`)
+    }
     
     useEffect(() => {
         fetchHelper();
+        setNextDayFunction();
         setInterval(() => {
             fetchHelper();
+            setNextDayFunction();
         }, 600000)
     }, [])
 
@@ -110,7 +192,7 @@ const Activities = () => {
 
                 { fetchedData && fetchedData.length < 14 ? 
                     <tr>
-                        <td>Næste skoledag</td>
+                        <td>{nextDay}</td>
                     </tr> 
                     : null
                 }
