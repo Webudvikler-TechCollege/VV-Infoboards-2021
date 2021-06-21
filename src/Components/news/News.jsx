@@ -1,6 +1,6 @@
 import { fetch2api } from '../../helpers/helper'
 import { useEffect, useState } from 'react';
-import Style from './News.module.scss';
+import './News.module.scss';
 
 export const News = () => {
     const[hytteListe, setHytteListe] = useState(null);
@@ -19,7 +19,7 @@ export const News = () => {
         <marquee scrollamount="50" behavior="" direction=""><p>
             {hytteListe && hytteListe.map((item, i) => {
                 return(
-                    item.title + `*`
+                    <span>{item.title} * </span>
                 )
             })}
         </p></marquee>
