@@ -16,7 +16,7 @@ export const News = () => {
     }, [])
 
     return(
-        <marquee behavior="" direction=""><p>
+        <marquee scrollamount="50" behavior="" direction=""><p>
             {hytteListe && hytteListe.map((item, i) => {
                 return(
                     item.title + `*`
