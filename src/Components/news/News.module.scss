@@ -7,8 +7,12 @@
 }
 
 marquee{
+    position: absolute;
+    left: 0;
+    bottom: 0;
     display: flex;
     width: 100%;
+    background-color: #fff;
     font-family: "Titillium Web";
     p{
         font-size: 2vw;
