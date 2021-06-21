@@ -43,7 +43,7 @@ export const Bus = () => {
         diff -= minutes * 60;
 
         // Dispaly time difference
-        let difference = `${minutes}m`;
+        let difference = `${minutes}min`;
 
         departure[i].time = difference
       }
