@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+marquee{
+    display: flex;
+    width: 100%;
+    p{
+        font-size: 1vw;
+    }
+    span{
+        padding: 0 1em;
+    }
+}

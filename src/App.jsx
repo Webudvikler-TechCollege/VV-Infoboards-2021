@@ -18,6 +18,7 @@ function App() {
       <div className="list">
         <Activities />
       </div>
+      <News/>
     </main>
   );
 }
