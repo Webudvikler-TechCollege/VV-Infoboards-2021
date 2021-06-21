@@ -12,12 +12,13 @@ marquee{
     bottom: 0;
     display: flex;
     width: 100%;
-    background-color: #fff;
+    background-color: #333;
     font-family: "Titillium Web";
     p{
         font-size: 2vw;
         font-weight: 400;
         letter-spacing: 4px;
+        color: #ffffff;
     }
     span{
         padding: 0 1em;
