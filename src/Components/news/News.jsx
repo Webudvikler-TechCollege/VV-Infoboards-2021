@@ -1,8 +1,9 @@
+import {memo} from 'react';
 import { fetch2api } from '../../helpers/helper'
 import { useEffect, useState } from 'react';
 import './News.module.scss';
 
-export const News = () => {
+export const News = memo(() => {
     const[hytteListe, setHytteListe] = useState(null);
 
     const getHytteListe = async () => {
@@ -16,12 +17,12 @@ export const News = () => {
     }, [])
 
     return(
-        <marquee scrollamount="50" behavior="" direction=""><p>
-            {hytteListe && hytteListe.map((item, i) => {
+        <marquee scrollamount="10" behavior="" direction=""><p>
+            {hytteListe && hytteListe.map((item, index) => {
                 return(
-                    <span>{item.title} * </span>
+                    <span key={index}>{item.title} * </span>
                 )
             })}
         </p></marquee>
     )
-}
+}, []);
