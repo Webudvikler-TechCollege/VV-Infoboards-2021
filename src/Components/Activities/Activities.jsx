@@ -193,7 +193,7 @@ const Activities = () => {
                 { fetchedData && fetchedData.length < 14 ? 
                     <tr>
                         <td colSpan="5">
-                            <h2>{nextDay}</h2>
+                            <h4>{nextDay}</h4>
                         </td>
                     </tr> 
                     : null
