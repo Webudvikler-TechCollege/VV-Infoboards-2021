@@ -6,6 +6,10 @@ const Activities = () => {
     const [nextDayData, setNextDayData] = useState([]);
     const nextDay_Timestamp = new Date().setHours(0, 0, 0, 0) / 1000 + 86400;
 
+    const nextDay_Day = new Date(nextDay_Timestamp * 1000).getDay();
+    const nextDay_Month = new Date(nextDay_Timestamp * 1000).getMonth();
+    const nextDay_Date = new Date(nextDay_Timestamp * 1000).getDate();
+
     const [nextDay, setNextDay] = useState('');
 
     const fetchHelper = async () => {
@@ -25,10 +29,6 @@ const Activities = () => {
     };
 
     const setNextDayFunction = () => {
-        const nextDay_Day = new Date(nextDay_Timestamp * 1000).getDay();
-        const nextDay_Month = new Date(nextDay_Timestamp * 1000).getMonth();
-        const nextDay_Date = new Date(nextDay_Timestamp * 1000).getDate();
-
         let day, date = nextDay_Date, month;
 
         switch (nextDay_Day) {
@@ -99,7 +99,7 @@ const Activities = () => {
         }
 
 
-        setNextDay(`${day}`+ ` ${date}` + ` ${month}`)
+        setNextDay(`${day} ${date} ${month}`)
     }
     
     useEffect(() => {
@@ -107,7 +107,6 @@ const Activities = () => {
         setNextDayFunction();
         setInterval(() => {
             fetchHelper();
-            setNextDayFunction();
         }, 600000)
     }, [])
 
@@ -199,7 +198,7 @@ const Activities = () => {
                     : null
                 }
 
-                { fetchedData && fetchedData.length < 12 ? 
+                { fetchedData && fetchedData.length < 13 ? 
                     nextDayData.map((item, index) => {
                         return (
                             <tr key={index}>
