@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Style from './Activities.module.scss';
 
 const Activities = () => {
+    let apiStatus;
     const [fetchedData, setFetchedData] = useState([]);
     const [nextDayData, setNextDayData] = useState([]);
     const nextDay_Timestamp = new Date().setHours(0, 0, 0, 0) / 1000 + 86400;
@@ -20,12 +21,18 @@ const Activities = () => {
         const response = await fetch(url, options);
         const data = await response.json();
 
-        const fetched_data = data.result.filter(elements => elements.timestamp < nextDay_Timestamp);
-        setFetchedData(fetched_data)
+        if(!data.result.message) {
+            apiStatus = true;
+            const fetched_data = data.result.filter(elements => elements.timestamp < nextDay_Timestamp);
+            setFetchedData(fetched_data)
+    
+            const next_day_data = data.result.filter(elements => elements.timestamp >= nextDay_Timestamp);
+            const next_day_data_sliced = next_day_data.slice(0, 14 - 1 - fetchedData.length);
+            setNextDayData(next_day_data_sliced);
+        } else {
+            apiStatus = false;
+        }
 
-        const next_day_data = data.result.filter(elements => elements.timestamp >= nextDay_Timestamp);
-        const next_day_data_sliced = next_day_data.slice(0, 14 - 1 - fetchedData.length);
-        setNextDayData(next_day_data_sliced);
     };
 
     const setNextDayFunction = () => {
@@ -189,7 +196,7 @@ const Activities = () => {
                     )
                 })}
 
-                { fetchedData && fetchedData.length < 14 ? 
+                { apiStatus && fetchedData && fetchedData.length < 14 ? 
                     <tr>
                         <td colSpan="5">
                             <h4>{nextDay}</h4>
