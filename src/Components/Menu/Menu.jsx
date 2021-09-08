@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { doFetch } from '../../helpers/fetch'
 import Style from './Menu.module.scss'
+const interval = 1; // Minutes
+
 export default function Menu() {
 
   const [days, setDays] = useState(null);
@@ -10,6 +12,7 @@ export default function Menu() {
   const getMenu = async () => {
     let res = await doFetch(url)
     setDays(res)
+    setTimeout(() => getMenu(), interval * 1000 * 60);
   }
 
   useEffect(() => {
