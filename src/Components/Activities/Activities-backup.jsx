@@ -184,11 +184,42 @@ const Activities = () => {
             </thead>
 
             <tbody id="tableBody">
-                <tr>
-                    <td colSpan="5">
-                        <p>Opdaterer...</p>
-                    </td>
-                </tr> 
+                
+                {fetchedData && fetchedData.slice(0, 14).map((item, index) => {
+                    return (
+                        <tr key={index}>
+                            <td>{handleTime(item.timestamp)}</td>
+                            <td>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</td>
+                            <td>{handleEducation(item.class)}</td>
+                            <td>{item.class}</td>
+                            <td>{item.classroom}</td>
+                        </tr>
+                    )
+                })}
+
+                { apiStatus && fetchedData && fetchedData.length < 14 ? 
+                    <tr>
+                        <td colSpan="5">
+                            <h4>{nextDay}</h4>
+                        </td>
+                    </tr> 
+                    : null
+                }
+
+                { fetchedData && fetchedData.length < 13 ? 
+                    nextDayData.map((item, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{handleTime(item.timestamp)}</td>
+                                <td>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</td>
+                                <td>{handleEducation(item.class)}</td>
+                                <td>{item.class}</td>
+                                <td>{item.classroom}</td>
+                            </tr>
+                        ) 
+                    })
+                    : null
+                }
             </tbody>
         </table>
     )
