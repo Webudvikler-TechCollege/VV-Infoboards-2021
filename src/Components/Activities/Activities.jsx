@@ -188,12 +188,12 @@ const Activities = () => {
                 <tr>
                     <td colSpan="5">
                         <p>Afventer data...</p>
-                        <div style={{margin: `30px 0 20px 0`}}>
+                        <div className={Style.spinner}>
                             <Loader
-                                type="Circles"                                
+                                type="Rings"                                
                                 color="#ddd"
-                                height={`60%`}
-                                width={`55%`}
+                                height={`50%`}
+                                width={`50%`}
                                 timeout={0} //3 secs
                             />
                         </div>
