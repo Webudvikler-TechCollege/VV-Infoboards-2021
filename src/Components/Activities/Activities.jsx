@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loader from "react-loader-spinner";
 import Style from './Activities.module.scss';
 
 const Activities = () => {
@@ -186,7 +187,16 @@ const Activities = () => {
             <tbody id="tableBody">
                 <tr>
                     <td colSpan="5">
-                        <p>Opdaterer...</p>
+                        <p>Afventer data...</p>
+                        <div style={{margin: `30px 0 20px 0`}}>
+                            <Loader
+                                type="Circles"                                
+                                color="#ddd"
+                                height={`60%`}
+                                width={`55%`}
+                                timeout={0} //3 secs
+                            />
+                        </div>
                     </td>
                 </tr> 
             </tbody>
