@@ -190,7 +190,7 @@ const Activities = () => {
                         <p>Afventer data...</p>
                         <div className={Style.spinner}>
                             <Loader
-                                type="Bars"                                
+                                type="Grid"                                
                                 color="#ddd"
                                 height={`50%`}
                                 width={`50%`}

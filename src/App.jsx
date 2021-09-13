@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Activities from './Components/Activities/Activities';
 import { GetCurrentDate } from './Components/Date/customDate';
 import Menu from './Components/Menu/Menu';
@@ -10,20 +10,34 @@ import Img from './image/lol.png'
 function App() {
   return (
     <main className="App">
-      <div className="aside">
-          <GetCurrentDate/>
-          <Menu/>
-          <Bus/>
+      <aside>
+          <div>
+            <GetCurrentDate/>
+          </div>
+
+          <div>
+            <Menu/>
+          </div>
+          
+          <div>
+            <Bus/>
+          </div>
+          
           {/* <Weather/> */}
-      </div>
-      <div className="main-content">
+      </aside>
+
+      <section className="main-content">
+        
         <div className="list">
           <Activities />
         </div>
+
         <div className="news">
           <News/>
         </div>
-      </div>
+
+      </section>
+
     </main>
   );
 }
